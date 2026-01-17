@@ -8,14 +8,16 @@ This repository contains a curated dataset of textile images for AI-based defect
 
 ### Directory Organization
 
-- **`defect/`**: Contains images of textile samples with defects (106 images)
+- **`defect/`**: Contains images of textile samples with defects
   - Images are named with the pattern: `{id}_{type}_{category}.png`
   - Examples: `0001_002_00.png`, `0010_006_02.png`
+  - Current count (as of initial dataset): 106 images
   
-- **`no_defect/`**: Contains images of defect-free textile samples organized in subdirectories (7 categories)
+- **`no_defect/`**: Contains images of defect-free textile samples organized in subdirectories
   - Each subdirectory represents a different textile sample batch
   - Subdirectory naming pattern: `{id}-{code}u` (e.g., `2306881-210020u`)
   - Images within subdirectories follow the pattern: `{id}_{subid}_{category}.png`
+  - Current batches (as of initial dataset): 7 subdirectories
 
 ### File Naming Conventions
 
@@ -73,9 +75,14 @@ This repository contains a curated dataset of textile images for AI-based defect
 
 ### Analyzing Dataset Statistics
 ```bash
-# Count images by category
+# Count defect images
 ls defect/ | wc -l
+
+# Count no-defect batches/subdirectories
 ls -d no_defect/*/ | wc -l
+
+# Count all no-defect images
+find no_defect/ -name '*.png' | wc -l
 
 # List all no-defect batches
 ls no_defect/
