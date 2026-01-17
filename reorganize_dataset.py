@@ -246,9 +246,10 @@ def main():
     
     args = parser.parse_args()
     
-    # Validate arguments
-    if args.train_ratio + args.val_ratio + args.test_ratio != 1.0:
-        parser.error(f"Ratios must sum to 1.0, got {args.train_ratio + args.val_ratio + args.test_ratio}")
+    # Validate arguments (use tolerance for floating-point comparison)
+    total_ratio = args.train_ratio + args.val_ratio + args.test_ratio
+    if abs(total_ratio - 1.0) > 0.001:
+        parser.error(f"Ratios must sum to 1.0, got {total_ratio}")
     
     print("="*60)
     print("TEXTILE DATASET REORGANIZATION")
